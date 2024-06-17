@@ -243,20 +243,20 @@ screen quick_menu():
 
     if quick_menu:
 
-        hbox:
-            style_prefix "quick"
+        frame:
+            style "quick_menu_frame"
 
-            xalign 0.5
-            yalign 1.0
+            vbox:
+                style_prefix "quick"
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+                textbutton _("Back") action Rollback()
+                textbutton _("History") action ShowMenu('history')
+                textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+                textbutton _("Auto") action Preference("auto-forward", "toggle")
+                textbutton _("Save") action ShowMenu('save')
+                textbutton _("Q.Save") action QuickSave()
+                textbutton _("Q.Load") action QuickLoad()
+                textbutton _("Prefs") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -266,6 +266,16 @@ init python:
 
 default quick_menu = True
 
+# Define styles for the quick menu frame and buttons
+style quick_menu_frame:
+    background Solid((0, 0, 0, 200))  # Solid black background with 78% opacity
+    padding (10, 10)
+    xsize 115
+    ysize 280
+    xalign 1.0
+    yalign 0.5
+
+    
 style quick_button is default
 style quick_button_text is button_text
 
